@@ -32,7 +32,7 @@ COPY --from=builder /app/package-lock.json /app/package-lock.json
 RUN npm ci --omit=dev --ignore-scripts
 
 # Set environment variables for API key and custom API URL if needed
-
+ENV CLOUD_SERVICE=true
 
 # Specify the command to run the application
-ENTRYPOINT ["sh", "-c", "node dist/index.js --sse --port $PORT"]
+CMD ["node", "dist/index.js"]
